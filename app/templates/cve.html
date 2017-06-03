@@ -21,7 +21,7 @@
 										<li><a href="https://www.cvedetails.com/cve-details.php?cve_id={{ issue.id }}">CVE Details</a></li>
 									</ul>
 								</li>
-								<li>Bugs
+								<li>バグ
 									<ul>
 										<li><a href="https://bugs.archlinux.org/?project=0&order=id&status%5B%5D=&sort=desc&search_in_details=1&string={{ issue.id }}">Arch Linux</a></li>
 										<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id={{ issue.id }}">Red Hat</a></li>
@@ -30,36 +30,36 @@
 										<li><a href="https://github.com/search?type=Issues&q=%22{{ issue.id }}%22">GitHub</a></li>
 									</ul>
 								</li>
-								<li>Lists
+								<li>メーリングリスト
 									<ul>
 										<li><a href="https://marc.info/?l=oss-security&s={{ issue.id }}">oss-security</a></li>
 										<li><a href="https://marc.info/?l=full-disclosure&s={{ issue.id }}">full-disclosure</a></li>
 										<li><a href="https://marc.info/?l=bugtraq&s={{ issue.id }}">bugtraq</a></li>
 									</ul>
 								</li>
-								<li>Misc
+								<li>その他
 									<ul>
-										<li><a href="https://github.com/search?type=Code&q=%22{{ issue.id }}%22">GitHub code</a></li>
-										<li><a href="https://www.google.net/search?gws_rd=cr&q=%22{{ issue.id }}%22">web search</a></li>
+										<li><a href="https://github.com/search?type=Code&q=%22{{ issue.id }}%22">GitHub コード</a></li>
+										<li><a href="https://www.google.net/search?gws_rd=cr&q=%22{{ issue.id }}%22">ウェブ検索</a></li>
 									</ul>
 								</li>
 							</ul>
 						</td>
 					</tr>
 					<tr>
-						<td>Severity</td>
+						<td>深刻度</td>
 						<td>{{ colorize_severity(issue.severity) }}</td>
 					</tr>
 					<tr>
-						<td>Remote</td>
+						<td>リモート</td>
 						<td>{{ colorize_remote(issue.remote) }}</td>
 					</tr>
 					<tr>
-						<td>Type</td>
+						<td>種別</td>
 						<td>{{ colorize_unknown(issue.issue_type|capitalize) }}</td>
 					</tr>
 					<tr>
-						<td>Description</td>
+						<td>説明</td>
 						<td><pre>{{ nullable_value(issue.description) }}</pre></td>
 					</tr>
 				</tbody>
@@ -68,13 +68,13 @@
 			<table class="styled-table full size">
 				<thead>
 					<tr>
-						<th>Group</th>
-						<th>Package</th>
-						<th>Affected</th>
-						<th>Fixed</th>
-						<th>Severity</th>
-						<th>Status</th>
-						<th class="full size">Ticket</th>
+						<th>グループ</th>
+						<th>パッケージ</th>
+						<th>影響バージョン</th>
+						<th>修正バージョン</th>
+						<th>深刻度</th>
+						<th>状態</th>
+						<th class="full size">チケット</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -100,12 +100,12 @@
 			<table class="styled-table full size">
 				<thead>
 					<tr>
-						<th>Date</th>
-						<th>Advisory</th>
-						<th>Group</th>
-						<th>Package</th>
-						<th>Severity</th>
-						<th class="full size">Description</th>
+						<th>日付</th>
+						<th>アドバイザリ</th>
+						<th>グループ</th>
+						<th>パッケージ</th>
+						<th>深刻度</th>
+						<th class="full size">説明</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -126,7 +126,7 @@
 			<table class="styled-table full size">
 				<thead>
 					<tr>
-						<th>References</th>
+						<th>参照</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -140,7 +140,7 @@
 			<table class="styled-table full size">
 				<thead>
 					<tr>
-						<th>Notes</th>
+						<th>ノート</th>
 					</tr>
 				</thead>
 				<tbody>

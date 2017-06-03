@@ -1,26 +1,26 @@
 {%- extends "base.html" -%}
 {%- from "_formhelpers.html" import nullable_value, colorize_severity, colorize_status, bug_ticket -%}
 {% block content %}
-			<h1>Issues</h1>
+			<h1>問題</h1>
 			<div class="navbar">
 				<ul>
-					<li>{%- if not only_vulnerable %}<a href="/issues/vulnerable">vulnerable</a>{%- else %}<b>vulnerable</b>{%- endif %}</li>
-					<li>{%- if only_vulnerable %}<a href="/issues/all">all</a>{%- else %}<b>all</b>{%- endif %}</li>
+					<li>{%- if not only_vulnerable %}<a href="/issues/vulnerable">脆弱</a>{%- else %}<b>脆弱</b>{%- endif %}</li>
+					<li>{%- if only_vulnerable %}<a href="/issues/all">全て</a>{%- else %}<b>全て</b>{%- endif %}</li>
 				</ul>
 			</div>
 			<div class="scroll-x">
 				<table class="styled-table full size">
 					<thead>
 						<tr>
-							<th>Group</th>
-							<th>Issue</th>
-							<th>Package</th>
-							<th>Affected</th>
-							<th>Fixed</th>
-							<th>Severity</th>
-							<th>Status</th>
-							<th>Ticket</th>
-							<th class="center">Advisory</th>
+							<th>グループ</th>
+							<th>問題</th>
+							<th>パッケージ</th>
+							<th>影響バージョン</th>
+							<th>修正バージョン</th>
+							<th>深刻度</th>
+							<th>状態</th>
+							<th>チケット</th>
+							<th class="center">アドバイザリ</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,7 +48,7 @@
 									<a href="/{{ advisory }}">{{ advisory }}</a>{% if not loop.last %}<br/>{% endif %}
 									{%- endfor -%}
 								{%- elif not entry.group.advisory_qualified -%}
-									None
+									なし
 								{%- endif -%}
 							</td>
 						</tr>

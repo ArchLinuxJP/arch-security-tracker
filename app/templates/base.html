@@ -2,9 +2,9 @@
 <html>
 	<head>
 		{%- if title %}
-		<title>{{ title }} - Arch Linux Security Tracker</title>
+		<title>{{ title }} - Arch Linux セキュリティトラッカー</title>
 		{%- else %}
-		<title>Arch Linux Security Tracker</title>
+		<title>Arch Linux セキュリティトラッカー</title>
 		{%- endif %}
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel='icon' href='/static/favicon.ico' />
@@ -17,34 +17,34 @@
 	</head>
 	<body>
 		<div id="archnavbar">
-			<div id="logo"><a href="https://archlinux.org">overview</a></div>
+			<div id="logo"><a href="https://www.archlinuxjp.org/">Arch Linux</a></div>
 			<div id="archnavbarmenu">
 				<ul id="archnavbarlist">
-					<li id="anb-home"><a href="https://archlinux.org" title="Arch news, packages, projects and more">Home</a></li>
-					<li id="anb-packages"><a href="https://archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
-					<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
-					<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
-					<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
-					<li id="anb-security"><a href="https://security.archlinux.org/" title="Arch Linux Security Tracker">Security</a></li>
+					<li id="anb-home"><a href="https://www.archlinuxjp.org/" title="Arch ニュース、パッケージ、プロジェクトなど">ホーム</a></li>
+					<li id="anb-packages"><a href="https://www.archlinuxjp.org/packages/" title="Arch パッケージデータベース">パッケージ</a></li>
+					<li id="anb-forums"><a href="https://bbs.archlinuxjp.org/" title="コミュニティフォーラム">フォーラム</a></li>
+					<li id="anb-wiki"><a href="https://wiki.archlinuxjp.org/" title="コミュニティドキュメント">ArchWiki</a></li>
+					<li id="anb-bugs"><a href="https://slack.archlinuxjp.org/" title="チャット">Slack</a></li>
+					<li id="anb-security"><a href="https://security.archlinux.org/" title="Arch Linux セキュリティトラッカー">セキュリティ</a></li>
 					<li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
-					<li id="anb-download"><a href="https://archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+					<li id="anb-download"><a href="https://www.archlinuxjp.org/download/" title="Arch Linux を入手">ダウンロード</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="content">
 			<div class="navbar">
 				<ul>
-					<li><a href="/">issues</a></li>
-					<li><a href="/advisory">advisories</a></li>
+					<li><a href="/">問題</a></li>
+					<li><a href="/advisory">アドバイザリ</a></li>
 					<li><a href="/todo">todo</a></li>
 					{%- if not current_user.is_authenticated %}
-					<li><a href="/login">login</a></li>
+					<li><a href="/login">ログイン</a></li>
 					{%- else %}
-					<li><a href="/user">user</a></li>
-					<li><a href="/cve/add">add CVE</a></li>
-					<li><a href="/avg/add">add AVG</a></li>
-					<li><a href="/profile">profile</a></li>
-					<li><a href="/logout">logout</a></li>
+					<li><a href="/user">ユーザー</a></li>
+					<li><a href="/cve/add">CVE を追加</a></li>
+					<li><a href="/avg/add">AVG を追加</a></li>
+					<li><a href="/profile">プロフィール</a></li>
+					<li><a href="/logout">ログアウト</a></li>
 					{%- endif %}
 				</ul>
 			</div>

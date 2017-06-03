@@ -9,18 +9,18 @@
 Yippie!</pre>
 			<div>
 			{%- else %}
-			<h1>Todo Lists</h1>
+			<h1>Todo リスト</h1>
 			{%- endif %}
 			{%- if entries.scheduled_advisories %}
 			<h2>Scheduled advisories</h2>
 			<table class="styled-table medium size">
 				<thead>
 					<tr>
-						<th>Advisory</th>
-						<th>Group</th>
-						<th>Package</th>
-						<th>Severity</th>
-						<th class="full size">Type</th>
+						<th>アドバイザリ</th>
+						<th>グループ</th>
+						<th>パッケージ</th>
+						<th>深刻度</th>
+						<th class="full size">種別</th>
 						{%- if can_handle_advisory %}
 						<th class="center collapse size">Action</th>
 						{%- endif %}
@@ -35,7 +35,7 @@ Yippie!</pre>
 						<td>{{ colorize_severity(group.severity) }}</td>
 						<td>{{ advisory.advisory_type }}</td>
 						{%- if can_handle_advisory %}
-						<td class="no-padding"><a href="{{ advisory.id }}/publish" class="button button-table button-primary">publish</a></td>
+						<td class="no-padding"><a href="{{ advisory.id }}/publish" class="button button-table button-primary">公開</a></td>
 						{%- endif %}
 					</tr>
 				</tbody>
