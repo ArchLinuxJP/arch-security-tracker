@@ -1,6 +1,6 @@
 from flask import render_template, redirect
 from sqlalchemy import and_
-from config import TRACKER_ADVISORY_URL, TRACKER_BUGTRACKER_URL, TRACKER_GROUP_URL, TRACKER_ISSUE_URL
+from config import TRACKER_ADVISORY_URL, TRACKER_BUGTRACKER_URL, TRACKER_GROUP_URL, TRACKER_ISSUE_URL, TRACKER_SUMMARY_LENGTH_MAX
 from app import app, db
 from app.util import json_response
 from app.user import user_can_edit_issue, user_can_delete_issue, user_can_edit_group, user_can_delete_group, user_can_handle_advisory
@@ -17,8 +17,20 @@ from app.util import chunks, multiline_to_list
 from collections import defaultdict, OrderedDict
 from jinja2.utils import escape
 
+def get_bug_project(databases):
+    bug_project_mapping = {
+        1: ['core', 'extra', 'testing'],
+        5: ['community', 'community-testing', 'multilib', 'multilib-testing']
+    }
 
-def get_bug_data(cves, pkgs, group):
+    for category, repos in bug_project_mapping.items():
+        if all((database in repos for database in databases)):
+            return category
+
+    # Fallback
+    return 1
+
+def get_bug_data(cves, pkgs, versions, group):
     references = []
     references = [ref for ref in multiline_to_list(group.reference)
                   if ref not in references]
@@ -40,6 +52,9 @@ def get_bug_data(cves, pkgs, group):
     group_type = 'multiple issues' if len(unique_issue_types) > 1 else unique_issue_types[0]
     summary = '[{}] [Security] {} ({})'.format(pkg_str, group_type, ' '.join([cve.id for cve in cves]))
 
+    if TRACKER_SUMMARY_LENGTH_MAX != 0 and len(summary) > TRACKER_SUMMARY_LENGTH_MAX:
+        summary = "[{}] [Security] {} (Multiple CVE's)".format(pkg_str, group_type)
+
     # 5: critical, 4: high, 3: medium, 2: low, 1: very low.
     severitiy_mapping = {
         'unknown': 3,
@@ -50,9 +65,10 @@ def get_bug_data(cves, pkgs, group):
     }
 
     task_severity = severitiy_mapping.get(group.severity.name)
+    project = get_bug_project((pkg.database for pkg in versions))
 
     return {
-        'project': 1,  # all packages
+        'project': project,
         'product_category': 13,  # security
         'item_summary': summary,
         'task_severity': task_severity,
@@ -163,7 +179,7 @@ def get_group_data(avg):
     issue_types = list(issue_types)
     issues = sorted(issues, key=lambda item: item.id, reverse=True)
     packages = sorted(packages, key=lambda item: item.pkgname)
-    versions = sort_packages(filter_duplicate_packages(list(versions), True))
+    versions = filter_duplicate_packages(sort_packages(list(versions)), True)
     advisory_pending = group.status == Status.fixed and group.advisory_qualified and len(advisories) <= 0
 
     return {
@@ -239,7 +255,7 @@ def show_group(avg):
                            versions=versions,
                            Status=Status,
                            issue_type=issue_type,
-                           bug_data=get_bug_data(issues, packages, group),
+                           bug_data=get_bug_data(issues, packages, versions, group),
                            advisory_pending=data['advisory_pending'],
                            can_edit=user_can_edit_group(advisories),
                            can_delete=user_can_delete_group(advisories),
@@ -291,7 +307,7 @@ def get_package_data(pkgname):
     groups = sorted(groups, key=lambda item: item.id, reverse=True)
     groups = sorted(groups, key=lambda item: item.status)
     advisories = sorted(advisories, key=lambda item: item.id, reverse=True)
-    versions = sort_packages(filter_duplicate_packages(list(versions), True))
+    versions = filter_duplicate_packages(sort_packages(list(versions)), True)
     package = versions[0] if versions else None
 
     return {

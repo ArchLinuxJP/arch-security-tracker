@@ -1,4 +1,4 @@
-# Arch Linux Security Tracker [![Build Status](https://travis-ci.org/anthraxx/arch-security-tracker.svg?branch=master)](https://travis-ci.org/anthraxx/arch-security-tracker)
+# Arch Linux Security Tracker [![Build Status](https://travis-ci.org/archlinux/arch-security-tracker.svg?branch=master)](https://travis-ci.org/archlinux/arch-security-tracker)
 
 The **Arch Linux Security Tracker** is a lightweight flask based panel
 for tracking vulnerabilities in Arch Linux packages, displaying
@@ -21,6 +21,7 @@ vulnerability details and generating security advisories.
 * python-sqlalchemy
 * python-flask
 * python-flask-sqlalchemy
+* python-flask-talisman
 * python-flask-wtf
 * python-flask-login
 * python-requests
@@ -32,6 +33,7 @@ vulnerability details and generating security advisories.
 ### Tests
 
 * python-pytest
+* python-pytest-cov
 
 ### Virtualenv
 

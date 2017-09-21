@@ -38,13 +38,13 @@
 					<li><a href="/advisory">アドバイザリ</a></li>
 					<li><a href="/todo">todo</a></li>
 					{%- if not current_user.is_authenticated %}
-					<li><a href="/login">ログイン</a></li>
+					<li><a href="/login" accesskey="l">ログイン</a></li>
 					{%- else %}
 					<li><a href="/user">ユーザー</a></li>
 					<li><a href="/cve/add">CVE を追加</a></li>
 					<li><a href="/avg/add">AVG を追加</a></li>
 					<li><a href="/profile">プロフィール</a></li>
-					<li><a href="/logout">ログアウト</a></li>
+					<li><a href="/logout" accesskey="q">ログアウト</a></li>
 					{%- endif %}
 				</ul>
 			</div>
