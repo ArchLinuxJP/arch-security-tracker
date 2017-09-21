@@ -17,7 +17,7 @@ def login():
     if not form.validate_on_submit():
         status_code = Unauthorized.code if form.is_submitted() else 200
         return render_template('login.html',
-                               title='Login',
+                               title='ログイン',
                                form=form,
                                User=User,
                                password_length={'min': TRACKER_PASSWORD_LENGTH_MIN,

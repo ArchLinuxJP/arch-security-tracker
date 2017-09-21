@@ -105,7 +105,7 @@ def todo():
         'orphan_issues': orphan_issues
     }
     return render_template('todo.html',
-                           title='Todo Lists',
+                           title='Todo リスト',
                            entries=entries,
                            smiley=smileys_happy[randint(0, len(smileys_happy) - 1)],
                            can_handle_advisory=user_can_handle_advisory(),

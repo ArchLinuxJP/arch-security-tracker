@@ -44,7 +44,7 @@ def get_index_data(only_vulnerable=False, only_in_repo=True):
 def index(only_vulnerable=True, path=None):
     groups = get_index_data(only_vulnerable)
     return render_template('index.html',
-                           title='Issues' if not only_vulnerable else 'Vulnerable issues',
+                           title='インシデント' if not only_vulnerable else '脆弱インシデント',
                            entries=groups,
                            only_vulnerable=only_vulnerable)
 

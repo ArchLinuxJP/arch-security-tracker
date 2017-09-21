@@ -1,7 +1,7 @@
 {%- extends "base.html" -%}
 {%- from "_formhelpers.html" import nullable_value, colorize_severity, colorize_status, bug_ticket -%}
 {% block content %}
-			<h1>問題</h1>
+			<h1>インシデント</h1>
 			<div class="navbar">
 				<ul>
 					<li>{%- if not only_vulnerable %}<a href="/issues/vulnerable">脆弱</a>{%- else %}<b>脆弱</b>{%- endif %}</li>
@@ -13,7 +13,7 @@
 					<thead>
 						<tr>
 							<th>グループ</th>
-							<th>問題</th>
+							<th>インシデント</th>
 							<th>パッケージ</th>
 							<th>影響バージョン</th>
 							<th>修正バージョン</th>

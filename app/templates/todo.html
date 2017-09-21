@@ -5,8 +5,7 @@
 				and not entries.bumped_groups and not entries.unknown_groups and not entries.unknown_issues and not entries.orphan_issues %}
 			<div class="error_icon_box">
 				<p class="icon">{{ smiley }}</p>
-				<pre class="text">nothing to do
-Yippie!</pre>
+				<pre class="text">todo はありません</pre>
 			<div>
 			{%- else %}
 			<h1>Todo リスト</h1>
@@ -47,12 +46,12 @@ Yippie!</pre>
 			<table class="styled-table medium size">
 				<thead>
 					<tr>
-						<th>Group</th>
-						<th>Package</th>
-						<th>Severity</th>
-						<th>Affected</th>
-						<th>Fixed</th>
-						<th>Ticket</th>
+						<th>グループ</th>
+						<th>パッケージ</th>
+						<th>深刻度</th>
+						<th>影響バージョン</th>
+						<th>修正バージョン</th>
+						<th>チケット</th>
 						{%- if can_handle_advisory %}
 						<th class="center collapse size">Action</th>
 						{%- endif %}
@@ -84,11 +83,11 @@ Yippie!</pre>
 			<table class="styled-table medium size">
 				<thead>
 					<tr>
-						<th>Advisory</th>
-						<th>Group</th>
-						<th>Package</th>
-						<th>Severity</th>
-						<th class="full size">Type</th>
+						<th>アドバイザリ</th>
+						<th>グループ</th>
+						<th>パッケージ</th>
+						<th>深刻度</th>
+						<th class="full size">タイプ</th>
 						{%- if can_handle_advisory %}
 						<th class="center collapse size">Action</th>
 						{%- endif %}
@@ -228,11 +227,11 @@ Yippie!</pre>
 			<table class="styled-table medium size">
 				<thead>
 					<tr>
-						<th>Issue</th>
-						<th>Severity</th>
+						<th>インシデント</th>
+						<th>深刻度</th>
 						<th>Remote</th>
-						<th>Type</th>
-						<th class="full size">Description</th>
+						<th>タイプ</th>
+						<th class="full size">説明</th>
 						{%- if can_edit_issue %}
 						<th class="center collapse size">Action</th>
 						{%- endif %}

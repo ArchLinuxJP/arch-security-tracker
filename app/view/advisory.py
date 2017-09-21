@@ -104,7 +104,7 @@ def advisory():
         monthly_published[month].append(item)
 
     return render_template('advisories.html',
-                           title='Advisories',
+                           title='アドバイザリ',
                            scheduled=data['scheduled'],
                            published=monthly_published)
 

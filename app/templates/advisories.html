@@ -1,9 +1,9 @@
 {%- extends "base.html" -%}
 {%- from "_formhelpers.html" import nullable_value, colorize_severity, colorize_status, bug_ticket -%}
 {% block content %}
-			<h1>Advisories</h1>
+			<h1>アドバイザリ</h1>
 			{%- if scheduled %}
-			<h2>Scheduled</h2>
+			<h2>予定</h2>
 			<table class="styled-table medium size">
 				<thead>
 					<tr>
@@ -32,7 +32,7 @@
 				{%- endfor %}
 			</table>
 			{%- endif %}
-			<h2>Published</h2>
+			<h2>公開</h2>
 			{%- for month, advisories in published.items() %}
 			<h3>{{ month }}</h3>
 			<table class="styled-table medium size">
